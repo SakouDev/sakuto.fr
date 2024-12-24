@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      text-shadow: 0 0 5px #ffffff, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00;
+      opacity: 1;
+    }
+    20%, 24%, 55% {
+      text-shadow: none;
+      opacity: 0.8;
+    }
+  }
+  
+  .neon-text {
+    color: #ffffff;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00;
+    animation: flicker 1.5s infinite;
+  }
+
+
+@keyframes neonPulse {
+    0% {
+      box-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
+    }
+    50% {
+      box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 40px #00ff88, 0 0 50px #00ff88;
+    }
+    100% {
+      box-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
+    }
+  }
+  
+  .neon-button {
+    background-color: #2a9d8f;
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 10px 20px;
+    font-size: 18px;
+    box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+    animation: neonPulse 1.5s infinite;
+    transition: transform 0.2s ease;
+  }
+  
+  .neon-button:hover {
+    transform: scale(1.1);
+  }
