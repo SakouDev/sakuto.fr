@@ -11,7 +11,7 @@ export default function Home() {
 
     <div className="card  h-96">
       <div className="card-body flex flex-col items-center justify-around">
-        <h2 className="card-title text-white text-5xl font-medium neon-text mt-2">{`24/12 -> 30/12`}</h2>
+        <h2 className="card-title text-white text-5xl font-medium neon-text mt-2">{`31/12 -> 06/12`}</h2>
        
         <div className="card-actions justify-end">
         <ul className="flex flex-row items-center justify-center gap-20">
