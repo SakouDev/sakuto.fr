@@ -3,6 +3,7 @@ import T1 from "@/assets/images/T1.jpg";
 import T2 from "@/assets/images/T2.jpg";
 import T3 from "@/assets/images/T3.jpg";
 import T4 from "@/assets/images/T4.jpg";
+import Table from "@/assets/images/Table.png";
 
 export default function Home() {
   return (
@@ -41,6 +42,10 @@ export default function Home() {
           </li>
         </ul>
         </div>
+        <DialogModal
+              Image={Table}
+              Title="Tableau avec nom"
+            />
       </div>
     </div>
 
