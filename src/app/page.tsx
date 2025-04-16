@@ -3,10 +3,10 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [data, setData] = useState<Array<String>>([]);
+  const [data, setData] = useState<Array<string>>([]);
 
-  const [result, setResult] = useState<String>("test");
-  const [inputData, setInputData] = useState<String>("");
+  const [result, setResult] = useState<string>("test");
+  const [inputData, setInputData] = useState<string>("");
 
   function randomData() {
     if (data.length === 0) {
@@ -36,9 +36,10 @@ export default function Home() {
           placeholder="Type here"
           className="neon-button"
           onChange={(e) => setInputData(e.currentTarget.value)}
+          value={inputData}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              setData((prev: Array<String>) => [...prev, inputData]);
+              setData((prev: Array<string>) => [...prev, inputData]);
               setInputData("");
             }
           }}
@@ -70,23 +71,41 @@ export default function Home() {
       <div className="w-1/4">
         <ul className="list w-full bg-base-100 rounded-box shadow-md">
           <span className="divider"></span>
-          <li className="p-4 pb-2 text-xs opacity-60 tracking-wide text-center text-3xl neon-text pb-10">
+          <li className="p-4 opacity-60 tracking-wide text-center text-5xl neon-text pb-10">
             List
           </li>
 
           <span className="divider"></span>
-          {data.map((item: String , index: number) => (
+          {data.map((item: string , index: number) => (
             <div className="w-full" key={index}>
               <li className="list-row display flex justify-around p-3">
                 <div
                   className="text-4xl w-1/2 flex items-center justify-center font-thin opacity-30 tabular-nums"
-                  onClick={() => removeItem(index)}
                 >
                   {index + 1}
                 </div>
                 <div className="list-col-grow w-1/2 flex items-center justify-center">
                   <div>{item}</div>
                 </div>
+                <button
+                  className="btn btn-sm btn-circle btn-ghost"
+                  onClick={() => removeItem(index)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
               </li>
               <span className="divider"></span>
             </div>
