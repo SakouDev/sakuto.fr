@@ -1,6 +1,5 @@
 "use client";
 
-import DialogModal from "@/components/Modal";
 import { useState } from "react";
 
 export default function Home() {
@@ -14,7 +13,7 @@ export default function Home() {
       alert("No more data available");
       return;
     }
-console.log(inputData);
+    console.log(inputData);
 
     const randomIndex = Math.floor(Math.random() * data.length);
     const randomItem = data[randomIndex];
@@ -45,22 +44,17 @@ console.log(inputData);
             }
           }}
         />
-        {/* <button
-          className="btn"
-          onClick={() => 
-          }}
-        >
-          Add
-        </button> */}
-        <button
-          className="btn"
-          onClick={() => {
-            document.getElementById("my_modal_2").showModal();
-            randomData();
-          }}
-        >
-          Random
-        </button>
+        {data.length > 0 ? (
+          <button
+            className="btn"
+            onClick={() => {
+              document.getElementById("my_modal_2").showModal();
+              randomData();
+            }}
+          >
+            Random
+          </button>
+        ) : (<>Add more data</>)}
         <dialog id="my_modal_2" className="modal">
           <div className="modal-box">
             <h3 className="font-bold text-lg">Winner :</h3>
