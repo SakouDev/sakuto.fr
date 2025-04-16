@@ -3,10 +3,10 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<Array<String>>([]);
 
-  const [result, setResult] = useState<any>("test");
-  const [inputData, setInputData] = useState<any>("");
+  const [result, setResult] = useState<String>("test");
+  const [inputData, setInputData] = useState<String>("");
 
   function randomData() {
     if (data.length === 0) {
@@ -36,10 +36,9 @@ export default function Home() {
           placeholder="Type here"
           className="neon-button"
           onChange={(e) => setInputData(e.currentTarget.value)}
-          value={inputData}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              setData((prev: any) => [...prev, inputData]);
+              setData((prev: Array<String>) => [...prev, inputData]);
               setInputData("");
             }
           }}
@@ -48,7 +47,10 @@ export default function Home() {
           <button
             className="btn"
             onClick={() => {
-              document.getElementById("my_modal_2").showModal();
+              const modal = document.getElementById("my_modal_2") as HTMLDialogElement | null;
+              if (modal) {
+                modal.showModal();
+              }
               randomData();
             }}
           >
@@ -68,12 +70,12 @@ export default function Home() {
       <div className="w-1/4">
         <ul className="list w-full bg-base-100 rounded-box shadow-md">
           <span className="divider"></span>
-          <li className="p-4 pb-2 text-xs opacity-60 tracking-wide text-center text-5xl neon-text pb-10">
+          <li className="p-4 pb-2 text-xs opacity-60 tracking-wide text-center text-3xl neon-text pb-10">
             List
           </li>
 
           <span className="divider"></span>
-          {data.map((item: any, index: number) => (
+          {data.map((item: String , index: number) => (
             <div className="w-full" key={index}>
               <li className="list-row display flex justify-around p-3">
                 <div
