@@ -1,54 +1,102 @@
+"use client";
+
 import DialogModal from "@/components/Modal";
-import T1 from "@/assets/images/T1.jpg";
-import T2 from "@/assets/images/T2.jpg";
-import T3 from "@/assets/images/T3.jpg";
-import T4 from "@/assets/images/T4.jpg";
-import Table from "@/assets/images/Table.png";
+import { useState } from "react";
 
 export default function Home() {
+  const [data, setData] = useState<any>([]);
+
+  const [result, setResult] = useState<any>("test");
+  const [inputData, setInputData] = useState<any>("");
+
+  function randomData() {
+    if (data.length === 0) {
+      alert("No more data available");
+      return;
+    }
+console.log(inputData);
+
+    const randomIndex = Math.floor(Math.random() * data.length);
+    const randomItem = data[randomIndex];
+    setResult(randomItem);
+    console.log(randomItem);
+    return result;
+  }
+
+  function removeItem(index: number) {
+    const newData = [...data];
+    newData.splice(index, 1);
+    setData(newData);
+  }
+
   return (
-    <div className="flex items-center justify-center h-screen w-full"> 
-     
-
-    <div className="card  h-96">
-      <div className="card-body flex flex-col items-center justify-around">
-        <h2 className="card-title text-white text-5xl font-medium neon-text mt-2">{`31/12 -> 06/12`}</h2>
-       
-        <div className="card-actions justify-end">
-        <ul className="flex flex-row items-center justify-center gap-20">
-          <li>
-            <DialogModal
-              Image={T1}
-              Title="Tier 1"
-            />
-          </li>
-          <li>
-            <DialogModal
-              Image={T2}
-              Title="Tier 2"
-            />
-          </li>
-          <li>
-            <DialogModal
-              Image={T3}
-              Title="Tier 3"
-            />
-          </li>
-          <li>
-            <DialogModal
-              Image={T4}
-              Title="Tier 4"
-            />
-          </li>
-        </ul>
-        </div>
-        <DialogModal
-              Image={Table}
-              Title="Tableau avec nom"
-            />
+    <div className="flex items-center justify-center h-screen w-full">
+      <div className="w-1/3 h-1/3 flex flex-col items-center justify-around">
+        <input
+          type="text"
+          placeholder="Type here"
+          className="neon-button"
+          onChange={(e) => setInputData(e.currentTarget.value)}
+          value={inputData}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setData((prev: any) => [...prev, inputData]);
+              setInputData("");
+            }
+          }}
+        />
+        {/* <button
+          className="btn"
+          onClick={() => 
+          }}
+        >
+          Add
+        </button> */}
+        <button
+          className="btn"
+          onClick={() => {
+            document.getElementById("my_modal_2").showModal();
+            randomData();
+          }}
+        >
+          Random
+        </button>
+        <dialog id="my_modal_2" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Winner :</h3>
+            <p className="py-4">{result}</p>
+          </div>
+          <form method="dialog" className="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
       </div>
-    </div>
+      <div className="w-1/4">
+        <ul className="list w-full bg-base-100 rounded-box shadow-md">
+          <span className="divider"></span>
+          <li className="p-4 pb-2 text-xs opacity-60 tracking-wide text-center text-5xl neon-text pb-10">
+            List
+          </li>
 
+          <span className="divider"></span>
+          {data.map((item: any, index: number) => (
+            <div className="w-full" key={index}>
+              <li className="list-row display flex justify-around p-3">
+                <div
+                  className="text-4xl w-1/2 flex items-center justify-center font-thin opacity-30 tabular-nums"
+                  onClick={() => removeItem(index)}
+                >
+                  {index + 1}
+                </div>
+                <div className="list-col-grow w-1/2 flex items-center justify-center">
+                  <div>{item}</div>
+                </div>
+              </li>
+              <span className="divider"></span>
+            </div>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
