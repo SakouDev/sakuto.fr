@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dofus BTR Planning",
+  title: "Ramdomizer",
   description: "Fait par Sakuto",
 };
 
