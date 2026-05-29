@@ -18,7 +18,7 @@ export default function Page() {
   };
 
   const items = [
-  { "EN": "AETHER NOBILITAS", "CN": "以太贵族" },
+  { "EN": "Aether Nobilitas", "CN": "以太贵族" },
   { "EN": "Sacred Knight (Black)", "CN": "神圣骑士团（黑）" },
   { "EN": "Sacred Knight", "CN": "神圣骑士团" },
   { "EN": "Ocean Pearl (Red)", "CN": "沧海遗珠（赤）" },
